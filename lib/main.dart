@@ -136,6 +136,15 @@ class _MyHomePageState extends State<MyHomePage> {
         ),
       ),
       floatingActionButton: FloatingActionButton(
+        elevation: 15,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(18.3),
+          side: BorderSide(
+            color: const Color.fromARGB(255, 32, 193, 40),
+            width: 3.0,
+            //added style to the border of the button
+          ),
+        ),
         onPressed: _incrementCounter,
         tooltip: 'Increment',
         child: const Icon(Icons.add),
