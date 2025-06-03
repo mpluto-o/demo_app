@@ -11,6 +11,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: ThemeData(
         // This is the theme of your application.
@@ -30,6 +31,7 @@ class MyApp extends StatelessWidget {
         // tested with just a hot reload.
         colorScheme: ColorScheme.fromSeed(
           seedColor: const Color.fromARGB(255, 30, 179, 40),
+          brightness: Brightness.dark,
         ),
       ),
       home: const MyHomePage(title: 'Demo Flutter App'),
@@ -114,19 +116,22 @@ class _MyHomePageState extends State<MyHomePage> {
             const Text(
               'You have pushed the button this many times:',
               style: TextStyle(
-                color: Colors.black,
+                color: Color.fromARGB(255, 255, 255, 255),
                 fontWeight: FontWeight.w600,
               ),
             ),
             Text(
               '$_counter',
-              style: Theme.of(context).textTheme.headlineMedium,
+              style: Theme.of(context).textTheme.headlineMedium?.copyWith(
+                fontWeight: FontWeight.w600,
+                color: Colors.pinkAccent,
+              ),
             ),
 
             Text(
               'Why are you annoying me T_T ?',
               style: const TextStyle(
-                color: Colors.blueGrey,
+                color: Color.fromARGB(255, 136, 173, 191),
                 fontSize: 15.0,
                 fontWeight: FontWeight.w500,
                 //decoration: TextDecoration.underline,
@@ -137,6 +142,7 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       floatingActionButton: FloatingActionButton(
         elevation: 15,
+        //floatingactionactionbutton already comes with a shadow of 6.0 elevation
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(18.3),
           side: BorderSide(
