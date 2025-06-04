@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'dart:ui';
 
 void main() {
   runApp(const MyApp());
@@ -94,49 +95,61 @@ class _MyHomePageState extends State<MyHomePage> {
         //the colour changes the texts colour, not the app bar's colour
         titleTextStyle: TextStyle(color: Colors.black87, fontSize: 20.0),
       ),
-      body: Center(
-        // Center is a layout widget. It takes a single child and positions it
-        // in the middle of the parent.
-        child: Column(
-          // Column is also a layout widget. It takes a list of children and
-          // arranges them vertically. By default, it sizes itself to fit its
-          // children horizontally, and tries to be as tall as its parent.
-          //
-          // Column has various properties to control how it sizes itself and
-          // how it positions its children. Here we use mainAxisAlignment to
-          // center the children vertically; the main axis here is the vertical
-          // axis because Columns are vertical (the cross axis would be
-          // horizontal).
-          //
-          // TRY THIS: Invoke "debug painting" (choose the "Toggle Debug Paint"
-          // action in the IDE, or press "p" in the console), to see the
-          // wireframe for each widget.
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Text(
-              'You have pushed the button this many times:',
-              style: TextStyle(
-                color: Color.fromARGB(255, 255, 255, 255),
-                fontWeight: FontWeight.w600,
-              ),
-            ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headlineMedium?.copyWith(
-                fontWeight: FontWeight.w600,
-                color: Colors.pinkAccent,
-              ),
-            ),
 
-            Text(
-              'Why are you annoying me T_T ?',
-              style: const TextStyle(
-                color: Color.fromARGB(255, 136, 173, 191),
-                fontSize: 15.0,
-                fontWeight: FontWeight.w500,
-                //decoration: TextDecoration.underline,
+      body: Center(
+        child: Stack(
+          alignment: Alignment.center,
+          children: [
+            Container(
+              width: 330,
+              height: 190,
+              child: BackdropFilter(
+                filter: ImageFilter.blur(sigmaX: 1000.0, sigmaY: 1000.0),
+                child: Container(
+                  decoration: BoxDecoration(
+                    color: Colors.blueGrey.withOpacity(0.3),
+                    borderRadius: BorderRadius.circular(32.0),
+                  ), //Decoration
+                ), //Container
               ),
-            ), //a custom text i was tinkering around
+            ), //BackdropFilter
+            Container(
+              height: 150,
+              width: 300,
+              decoration: BoxDecoration(
+                color: Colors.blueGrey,
+                borderRadius: BorderRadius.circular(32.0),
+              ),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  const Text(
+                    'You have pushed the button this many times:',
+                    style: TextStyle(
+                      color: Color.fromARGB(255, 255, 255, 255),
+                      fontWeight: FontWeight.w600,
+                    ),
+                  ),
+                  Text(
+                    '$_counter',
+                    style: Theme.of(context).textTheme.headlineMedium?.copyWith(
+                      fontWeight: FontWeight.w600,
+                      color: Colors.pinkAccent,
+                    ),
+                  ),
+
+                  Text(
+                    'Why are you annoying me T_T ?',
+                    style: const TextStyle(
+                      color: Colors.black,
+                      fontSize: 15.0,
+                      fontWeight: FontWeight.w500,
+                      //decoration: TextDecoration.underline,
+                    ),
+                  ), //a custom text i was tinkering around
+                ],
+              ),
+            ),
           ],
         ),
       ),
