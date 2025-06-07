@@ -97,77 +97,72 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
 
       body: Center(
-        child: Column(
+        child: Stack(
+          alignment: Alignment.center,
           children: [
-            Stack(
-              alignment: Alignment.center,
-              children: [
-                Container(
-                  width: 350,
-                  height: 220,
-                  child: BackdropFilter(
-                    filter: ImageFilter.blur(sigmaX: 1000.0, sigmaY: 1000.0),
-                    child: Container(
-                      decoration: BoxDecoration(
-                        color: Colors.blueGrey.withOpacity(0.3),
-                        borderRadius: BorderRadius.circular(32.0),
-                      ), //Decoration
-                    ), //Container
-                  ),
-                ),
-                Container(
-                  width: 330,
-                  height: 190,
-                  child: BackdropFilter(
-                    filter: ImageFilter.blur(sigmaX: 1000.0, sigmaY: 1000.0),
-                    child: Container(
-                      decoration: BoxDecoration(
-                        color: Colors.blueGrey.withOpacity(0.3),
-                        borderRadius: BorderRadius.circular(32.0),
-                      ), //Decoration
-                    ), //Container
-                  ),
-                ), //BackdropFilter
-                Container(
-                  height: 150,
-                  width: 300,
+            Container(
+              width: 330,
+              height: 170,
+              child: BackdropFilter(
+                filter: ImageFilter.blur(sigmaX: 100, sigmaY: 100),
+                child: Container(
                   decoration: BoxDecoration(
-                    color: Colors.blueGrey,
+                    color: Colors.blueGrey.withOpacity(1),
                     borderRadius: BorderRadius.circular(32.0),
+                  ), //Decoration
+                ), //Container
+              ),
+            ),
+            Container(
+              width: 360,
+              height: 190,
+              child: BackdropFilter(
+                filter: ImageFilter.blur(sigmaX: 1000.0, sigmaY: 1000.0),
+                child: Container(
+                  decoration: BoxDecoration(
+                    color: Colors.blueGrey.withOpacity(0.3),
+                    borderRadius: BorderRadius.circular(32.0),
+                  ), //Decoration
+                ), //Container
+              ),
+            ), //BackdropFilter
+            //This is the main container that holds the text and the counter
+            Container(
+              height: 150,
+              width: 320,
+              decoration: BoxDecoration(
+                color: Colors.blueGrey,
+                borderRadius: BorderRadius.circular(32.0),
+              ),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  const Text(
+                    'You have pushed the button this many times:',
+                    style: TextStyle(
+                      color: Color.fromARGB(255, 255, 255, 255),
+                      fontWeight: FontWeight.w600,
+                    ),
                   ),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: <Widget>[
-                      const Text(
-                        'You have pushed the button this many times:',
-                        style: TextStyle(
-                          color: Color.fromARGB(255, 255, 255, 255),
-                          fontWeight: FontWeight.w600,
-                        ),
-                      ),
-                      Text(
-                        '$_counter',
-                        style: Theme.of(
-                          context,
-                        ).textTheme.headlineMedium?.copyWith(
-                          fontWeight: FontWeight.w600,
-                          color: Colors.pinkAccent,
-                        ),
-                      ),
+                  Text(
+                    '$_counter',
+                    style: Theme.of(context).textTheme.headlineMedium?.copyWith(
+                      fontWeight: FontWeight.w600,
+                      color: Colors.pinkAccent,
+                    ),
+                  ),
 
-                      Text(
-                        'Why are you annoying me T_T ?',
-                        style: const TextStyle(
-                          color: Colors.black,
-                          fontSize: 15.0,
-                          fontWeight: FontWeight.w500,
-                          //decoration: TextDecoration.underline,
-                        ),
-                      ), //a custom text i was tinkering around
-                    ],
-                  ),
-                ),
-              ],
+                  Text(
+                    'Why are you annoying me T_T ?',
+                    style: const TextStyle(
+                      color: Colors.black,
+                      fontSize: 15.0,
+                      fontWeight: FontWeight.w500,
+                      //decoration: TextDecoration.underline,
+                    ),
+                  ), //a custom text i was tinkering around
+                ],
+              ),
             ),
           ],
         ),
